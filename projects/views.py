@@ -1,7 +1,19 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render
 from .models import Project, Task
+from .forms import ProjectForm, TaskForm
 
 # Create your views here.
 def projects(requests):
     projects = Project.objects.all
     return render(requests, 'projects/projects.html', {'projects':projects})
+
+def createProject(requests):
+    if requests.method == 'POST':
+        form = ProjectForm(requests.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/projects')
+    else:
+        form = ProjectForm()
+
+    return render(requests, 'projects/add_project.html', {'form':form})
