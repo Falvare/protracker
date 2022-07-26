@@ -5,6 +5,7 @@
 {% if tasks %}
     {% for task in tasks %}
         <h3>{{task}}</h3>
+        <a href={% url 'task details' task.id %}>View task</a>
     {% endfor %}
 {% else %}
     <h3>There are no tasks yet</h3>
