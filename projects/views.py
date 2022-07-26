@@ -40,3 +40,10 @@ def addTask(requests, pk):
         form = TaskForm()
 
     return render(requests, 'projects/add_task.html', {'form':form})
+
+def taskDetails(requests, pk):
+    task = Task.objects.get(pk=pk)
+    context = {
+        'task':task
+    }
+    return render(requests, 'projects/task_details.html', context=context)
