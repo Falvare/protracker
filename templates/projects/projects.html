@@ -1,7 +1,7 @@
 <a href={% url 'create project' %}>Create Project</a>
 {% if projects %}
     {% for project in projects %}
-        <h1>{{project}}</h1>
+        <h1><a href={% url 'project details' project.id %}>{{project}}</a></h1>
     {% endfor %}
 {% else %}
     <h1>You have no projects yet</h1>
