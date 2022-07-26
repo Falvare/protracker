@@ -17,3 +17,7 @@ def createProject(requests):
         form = ProjectForm()
 
     return render(requests, 'projects/add_project.html', {'form':form})
+
+def projectDetails(requests, pk):
+    project = Project.objects.get(pk=pk)
+    return render(requests, 'projects/project_details.html', {'project':project})
