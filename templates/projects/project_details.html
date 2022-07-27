@@ -1,0 +1,12 @@
+<h1>{{project}}</h1>
+<h3>{{project.description}}</h3>
+<a href={% url 'add task' project.id%}>Add task</a>
+<h1>Tasks</h1>
+{% if tasks %}
+    {% for task in tasks %}
+        <h3>{{task}}</h3>
+        <a href={% url 'task details' task.id %}>View task</a>
+    {% endfor %}
+{% else %}
+    <h3>There are no tasks yet</h3>
+{% endif %}

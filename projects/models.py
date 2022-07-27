@@ -10,7 +10,10 @@ class Project(models.Model):
         return self.name
 
 class Task(models.Model):
-    task = models.CharField(max_length=100)
+    task = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.task
